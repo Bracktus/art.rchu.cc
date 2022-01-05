@@ -22,6 +22,10 @@ let n = 100;
 let r = 1000;
 let sqang = 0;
 
+function mousePressed(){
+    fullscreen();
+}
+
 function draw(){
   //camera
   background(0);
@@ -30,8 +34,8 @@ function draw(){
   
   //rendering
   let t, x, y, z;
-	stroke(255);
-	noFill();
+  stroke(255);
+  noFill();
   for(let i = 0; i < numPoints; i++){
     t = map(i, 0, numPoints, 0, PI);
     x = sin(t) * cos(n*t);
@@ -43,7 +47,7 @@ function draw(){
 		push();
 		rotate(sqang * 2);
 		translate(x*r, y*r, z*r);
-    box(25);
+        box(25);
 		pop();
   }
 }
