@@ -122,16 +122,16 @@ let numCirc = 7;
 let circleList = [];
 
 function setup() {
-  //frameRate(60);
-  createCanvas(500, 500);
+  let l = windowHeight * 0.75;
+  createCanvas(l, l);
   start1 = createVector(0, 0);
-  circleList[0] = new Circle(start1, 50, 100);
-  circleList[1] = new Circle(start1, 100, 100);
-  circleList[2] = new Circle(start1, 150, 100);
-  circleList[3] = new Circle(start1, 200, 100);
-  circleList[4] = new Circle(start1, 250, 100);
-  circleList[5] = new Circle(start1, 300, 100);
-  circleList[6] = new Circle(start1, 350, 100);
+  circleList[0] = new Circle(start1, l*0.2, 100);
+  circleList[1] = new Circle(start1, l*0.25, 100);
+  circleList[2] = new Circle(start1, l*0.3, 100);
+  circleList[3] = new Circle(start1, l*0.35, 100);
+  circleList[4] = new Circle(start1, l*0.4, 100);
+  circleList[5] = new Circle(start1, l*0.45, 100);
+  circleList[6] = new Circle(start1, l*0.5, 100);
 }
 
 function draw() {
