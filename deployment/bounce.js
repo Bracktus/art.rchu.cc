@@ -125,19 +125,18 @@ function setup() {
   let l = windowHeight * 0.75;
   createCanvas(l, l);
   start1 = createVector(0, 0);
-  circleList[0] = new Circle(start1, l*0.2, 100);
-  circleList[1] = new Circle(start1, l*0.25, 100);
-  circleList[2] = new Circle(start1, l*0.3, 100);
-  circleList[3] = new Circle(start1, l*0.35, 100);
-  circleList[4] = new Circle(start1, l*0.4, 100);
-  circleList[5] = new Circle(start1, l*0.45, 100);
-  circleList[6] = new Circle(start1, l*0.5, 100);
+  circleList[0] = new Circle(start1, l*0.15, 100);
+  circleList[1] = new Circle(start1, l*0.2, 100);
+  circleList[2] = new Circle(start1, l*0.25, 100);
+  circleList[3] = new Circle(start1, l*0.3, 100);
+  circleList[4] = new Circle(start1, l*0.35, 100);
+  circleList[5] = new Circle(start1, l*0.4, 100);
+  circleList[6] = new Circle(start1, l*0.45, 100);
 }
 
 function draw() {
-  translate(width / 2, height / 2);
   clear();
-  background(236, 233, 231, 0.8);
+  translate(width / 2, height / 2);
   fill(255);
   for (let i = 0; i < numCirc; i++) {
     circleList[i].update();
