@@ -24,3 +24,7 @@ function draw() {
 function keyPressed(){
     state = (state + 1) % 3;
 }
+
+function mouseClicked(){
+    state = (state + 1) % 3;
+}
