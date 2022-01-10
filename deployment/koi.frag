@@ -10,13 +10,13 @@ uniform int u_state;
 vec3 tail(float i, float i_max, vec2 uv){
     float x, y, d, val;
     
-    if (u_state == 0){
+    if (u_state == 1){
         x = 0.5 * tan(u_time*2.5 - i*0.01);
         y = 0.5 * sin(u_time*2.5 - i*0.01);
         d = length(uv - vec2(x,y));
         val = (i_max - i)/d*0.0009; 
     }
-    else if (u_state == 1){
+    else if (u_state == 0){
         x = 3.5 * sin(u_time*2.5 - i*0.05);
         y = sin((u_time*2.5 - i*0.05) * 2.0);
         x *= 0.2;
