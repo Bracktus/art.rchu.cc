@@ -11,7 +11,7 @@ uniform vec2 u_anchor_positions[6];
 void main() {
     vec2 uv = gl_FragCoord.xy/u_resolution.xy;
     uv -= 0.5;
-    /* uv.x *= u_resolution.x/u_resolution.y; */
+    uv.x /= u_resolution.y;
 
     float r = 0.;
     float g = 0.;
