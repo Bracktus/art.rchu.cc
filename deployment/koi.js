@@ -17,12 +17,10 @@ function draw() {
     shader(theShader);
     theShader.setUniform("u_resolution", [width, height]);
     theShader.setUniform("u_time", frameCount * 0.01);
-    theShader.setUniform("state", state);
+    theShader.setUniform("u_state", state);
     rect(0,0, width, height);
 }
 
 function keyPressed(){
     state = (state + 1) % 3;
 }
-
-
