@@ -125,14 +125,14 @@ var ballsData = [];
 var me;
 var theShader;
 
- function preload() {
-     theShader = loadShader("../deployment/koi.vert", "../deployment/koi.frag");
-}
+// function preload() {
+//      theShader = loadShader("../deployment/koi.vert", "../deployment/koi.frag");
+// }
 
 function setup(){
-    createCanvas(windowWidth, windowHeight, WEBGL);
+    // createCanvas(windowWidth, windowHeight, WEBGL);
     //noCursor();
-    noStroke();
+    createCanvas(windowWidth, windowHeight);
 
     me = new Player(200, 200, 5, 4);
     for (let i = 0; i < 6; i++){
@@ -141,7 +141,6 @@ function setup(){
         let x = map(balls[i].x, 0, width, -0.5, 0.5);
         let y = map(balls[i].y, 0, height, -0.5, 0.5);
         ballsData.push(x,y);
-
     }
 }
 
@@ -151,16 +150,20 @@ function windowResized(){
 
 function draw() {
     me.update();
-    shader(theShader);
-    theShader.setUniform("u_resolution", [width, height]);
-    theShader.setUniform("u_frameCount", frameCount)
-    theShader.setUniform("u_trail_positions", me.toData());
-    theShader.setUniform("u_anchor_positions", ballsData);
-    rect(0,0, width, height);
+    me.render();
+    for (let i = 0; i < 6; i++){
+        stroke(255,0,0);
+        circle(balls[i].x, balls[i].y, 5);
+    }
+    // shader(theShader);
+    // theShader.setUniform("u_resolution", [width, height]);
+    // theShader.setUniform("u_frameCount", frameCount)
+    // theShader.setUniform("u_trail_positions", me.toData());
+    // theShader.setUniform("u_anchor_positions", ballsData);
+    // rect(0,0, width, height);
 }
 
 function keyPressed(){
-    console.log("hi");
     me.attach(balls);
 }
 
