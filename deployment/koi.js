@@ -149,6 +149,7 @@ function windowResized(){
 }
 
 function draw() {
+    background(0);
     me.update();
     me.render();
     for (let i = 0; i < 6; i++){
