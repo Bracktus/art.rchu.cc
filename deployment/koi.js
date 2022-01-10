@@ -126,7 +126,7 @@ var me;
 var theShader;
 
  function preload() {
-     theShader = loadShader("koi.vert", "koi.frag");
+     theShader = loadShader("../deployment/koi.vert", "../deployment/koi.frag");
 }
 
 function setup(){
