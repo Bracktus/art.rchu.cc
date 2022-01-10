@@ -61,8 +61,8 @@ class Player {
     }
 
     getDirection(){
-        let diff = p5.Vector.sub(this.pos, this.attached);
-        let det = (diff.x - this.vel.y) * (diff.y - this.vel.x);
+        let diff = p5.Vector.sub(this.attached, this.pos);
+        let det = (diff.x * this.vel.y) - (diff.y * this.vel.x);
 
         return (det > 0) ? -1 : 1; 
     }
