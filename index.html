@@ -2,13 +2,47 @@
   <head>
       <title>art.rchu.cc</title>
   </head>
+  <style type= text/css>
+    @font-face {
+      font-family: 'Fantasque Sans Mono';
+      src: url('./font/FantasqueSansMono-Regular.woff2') format('woff2'),
+           url('./font/FantasqueSansMono-Regular.woff') format('woff'), /* Firefox >= 3.6, any other modern browser */
+           url('./font/FantasqueSansMono-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+           url('./font/FantasqueSansMono-Regular.svg#FantasqueSansMono-Regular') format('svg'); /* Chrome < 4, Legacy iOS */
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    body {
+        background: #e6fffe;
+        text-align: center;
+        font-family: 'Fantasque Sans Mono', Times, serif;
+    }
+    
+    a {
+        text-decoration: underline;
+        text-decoration-style: dotted;
+        text-decoration-line: underline;
+        text-decoration-thickness: 1px;
+    }
+
+    nav ul{
+        list-style-type: circle;
+        display: inline-block;
+        text-align: left;
+    }
+
+  </style>
   <body>
       <H1>Welcome!</H1>
-      <ul>
-          <a href="./bounce.html">Spring Bounce</a>
-          <a href="./sphere.html">Cubic Sphere</a>
-          <a href="./clifford.html">Clifford Attractors</a>
-          <a href="./koi.html">Koi</a>
-      </ul>
+      <H2>Also find me <a href="https://rchu.cc">here</a></H2>
+      <nav>
+          <ul>
+              <li><a href="./bounce.html">Spring Bounce</a></li>
+              <li><a href="./sphere.html">Cubic Sphere</a></li>
+              <li><a href="./clifford.html">Clifford Attractors</a></li>
+              <li><a href="./koi.html">Koi</a></li>
+          </ul>
+      </nav>
   </body>
 </html>
