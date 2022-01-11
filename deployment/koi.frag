@@ -34,7 +34,7 @@ vec3 tail(float i, float i_max, vec2 uv){
 
     float r = val*0.5;
     float g = val*0.5;
-    float b = 0.0;
+    float b = val;
 
     return vec3(r,g,b);
 }
