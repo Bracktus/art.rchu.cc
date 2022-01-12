@@ -25,7 +25,7 @@ vec3 tail(float i, float i_max, vec2 uv){
         val = (i_max - i)/d*0.002; 
     }
     else if (u_state == 2){
-        float t = u_time - i*0.025;
+        float t = (u_time - i*0.02)*1.5;
         x = 11.0*cos(t) - 6.0*cos(11.0*t/6.);
         y = 11.0*sin(t) - 6.0*sin(11.0*t/6.);
         x*=0.05;
