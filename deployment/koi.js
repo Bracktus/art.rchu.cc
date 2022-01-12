@@ -22,9 +22,9 @@ function draw() {
 }
 
 function keyPressed(){
-    state = (state + 1) % 3;
+    state = (state + 1) % 4;
 }
 
 function mouseClicked(){
-    state = (state + 1) % 3;
+    state = (state + 1) % 4;
 }
