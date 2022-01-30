@@ -9,7 +9,7 @@ function setup() {
 function draw() {
   background(0, 0, 10);
   stroke(255);
-  strokeWeight(3);
+  strokeWeight(2);
 
   let which = frameCount % num;
   mPrev[which] = createVector(mouseX, mouseY);
