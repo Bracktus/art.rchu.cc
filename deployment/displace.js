@@ -25,8 +25,8 @@ function draw() {
           let index = (which+1 + i) % num;
 
           if (p5.Vector.dist(mPrev[index], part) < i*2) {
-            diff = p5.Vector.add(part, mPrev[index]);
-            part.sub(p5.Vector.mult(diff, 0.1));
+            diff = p5.Vector.sub(part, mPrev[index]);
+            part.add(p5.Vector.mult(diff, 0.01));
           }
         }
       }
