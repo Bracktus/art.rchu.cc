@@ -6,11 +6,6 @@ class Particle {
     update(others){
         let vel;
         let disp = (sin(frameCount / 35) +1) * 0.005;
-        //let food = createVector(130*sin(frameCount*0.0151) + width/2 + noise(frameCount/200),
-        //                       200*cos(frameCount*0.0102) + height/2);
-        
-        //let food = createVector(100*cos(noise(frameCount*0.1)) + width/2,
-        //                       100*sin(noise(1+frameCount*0.1)) + height/2);
       
         let food = createVector(mouseX, mouseY);
         vel = p5.Vector.sub(this.pos, food).mult(0.05);
@@ -21,7 +16,7 @@ class Particle {
             let f = dir.mult(diff.mag() * disp);
             vel.sub(f);
         }
-      
+        vel.limit(3.5);
         this.pos.sub(vel);
         //this.clamp();
         
@@ -48,24 +43,41 @@ class Particle {
 }
 
 let parts = [];
+let c1;
+let c2;
 
-function setup() {
-    createCanvas(600, 600);
-    background(54,54,54);
-    for (let i = 0; i < 200; i++){
-      let x = random(width);
-      let y = random(height);
-      let pos = createVector(x,y)
-      parts[i] = new Particle(pos);
-    }
+function randomColour(){
+    let h = random(360);
+    let s = random(50, 90);
+    let l = random(40, 90);
+    return color(h,s,l);
 }
 
+function refresh(){
+    for (let i = 0; i < 200; i++){
+      //let x = random(width);
+      //let y = random(height);
+      let pos = createVector(width/2,height/2)
+      parts[i] = new Particle(pos);
+    }
+
+    c1 = randomColour();
+    c2 = randomColour();
+}
+
+function setup() {
+    colorMode(HSL, 360, 100, 100)
+    // createCanvas(600, 600);
+    createCanvas(windowWidth, windowHeight);
+
+    background(0, 0, 21);
+    refresh();
+}
 
 function draw() {
-    let from = color(218, 165, 32);
-    let to = color(72, 61, 139);  
-    let t = (sin(frameCount / 35) +1)/2
-    let inter = lerpColor(from, to, t);
+    let t = (sin(frameCount / 35) + 1)/2
+    let inter = lerpColor(c1, c2, t);
+
     fill(inter)
     stroke(inter)
     
@@ -74,4 +86,10 @@ function draw() {
       p.update(parts); 
       p.render(); 
     }
+}
+
+function mouseClicked(){
+
+  background(0, 0, 21);
+  refresh();
 }
