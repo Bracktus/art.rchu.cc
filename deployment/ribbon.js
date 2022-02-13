@@ -67,9 +67,7 @@ function refresh(){
 
 function setup() {
     colorMode(HSL, 360, 100, 100)
-    // createCanvas(600, 600);
     createCanvas(windowWidth, windowHeight);
-
     background(0, 0, 21);
     refresh();
 }
@@ -96,4 +94,5 @@ function mouseClicked(){
 
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
+  background(0, 0, 21);
 }
