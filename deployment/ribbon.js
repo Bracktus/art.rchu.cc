@@ -93,3 +93,7 @@ function mouseClicked(){
   background(0, 0, 21);
   refresh();
 }
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
