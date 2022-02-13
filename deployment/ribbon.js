@@ -16,7 +16,7 @@ class Particle {
             let f = dir.mult(diff.mag() * disp);
             vel.sub(f);
         }
-        vel.limit(3.5);
+        vel.limit(2);
         this.pos.sub(vel);
         //this.clamp();
         
