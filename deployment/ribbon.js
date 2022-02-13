@@ -42,6 +42,7 @@ class Particle {
     }
 }
 
+let cnv;
 let parts = [];
 let c1;
 let c2;
@@ -67,7 +68,7 @@ function refresh(){
 
 function setup() {
     colorMode(HSL, 360, 100, 100)
-    createCanvas(windowWidth, windowHeight);
+    cnv = createCanvas(windowWidth, windowHeight);
     background(0, 0, 21);
     refresh();
 }
@@ -87,12 +88,17 @@ function draw() {
 }
 
 function mouseClicked(){
-
   background(0, 0, 21);
   refresh();
 }
 
 function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+  cnv = resizeCanvas(windowWidth, windowHeight);
   background(0, 0, 21);
+}
+
+function keyPressed(){
+    if (keyCode === SPACE){
+        save(cnv, 'ribbon.jpg');
+    }
 }
