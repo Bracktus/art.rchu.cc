@@ -1,7 +1,7 @@
 var state = 0;
 
 function preload() {
-     theShader = loadShader("/deployment/meta/meta.vert", "/deployment/meta/meta.frag")
+     theShader = loadShader("/deployment/metaballs/meta.vert", "/deployment/metaballs/meta.frag")
 }
 
 function setup(){
