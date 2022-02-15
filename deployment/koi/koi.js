@@ -1,7 +1,7 @@
 var state = 0;
 
 function preload() {
-     theShader = loadShader("./koi.vert", "./koi.frag");
+     theShader = loadShader("/deployment/koi/koi.vert", "/deployment/koi/koi.frag")
 }
 
 function setup(){
