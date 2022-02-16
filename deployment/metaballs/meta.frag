@@ -8,9 +8,9 @@ uniform float u_time;
 uniform vec2 u_mouse;
 
 vec3 charge(vec2 uv, vec2 pos, float rad){
-    vec2 r = pos + vec2(sin(u_time/100.)*0.003, 0.0);
+    vec2 r = pos + vec2(sin(u_time/100.)*0.03, 0.0);
     vec2 g = r + vec2(0.001, -0.001);
-    vec2 b = pos + vec2(cos(u_time/100.)*0.003, sin(u_time/100.)*0.002);
+    vec2 b = pos + vec2(cos(u_time/100.)*0.03, sin(u_time/100.)*0.03);
 
     float chargeR = rad / length(uv - r); 
     float chargeG = rad / length(uv - g); 
