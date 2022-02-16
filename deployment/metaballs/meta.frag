@@ -27,7 +27,7 @@ void main() {
     uv.x *= u_resolution.x/u_resolution.y;
 
     /* vec2 b1 = vec2(0.1, 0.3); */
-
+    u_mouse.y *= -1.;
     vec2 b1 = u_mouse;
     vec2 b2 = vec2(0.3, 0.01);
 
