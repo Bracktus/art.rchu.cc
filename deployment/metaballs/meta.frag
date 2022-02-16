@@ -8,9 +8,9 @@ uniform float u_time;
 uniform vec2 u_mouse;
 
 vec3 charge(vec2 uv, vec2 pos, float rad){
-    vec2 r = pos + vec2(sin(u_time/100.)*0.03, 0.0);
-    vec2 g = r + vec2(0.001, -0.001);
-    vec2 b = pos + vec2(cos(u_time/100.)*0.03, sin(u_time/100.)*0.03);
+    vec2 r = pos + vec2(sin(u_time/2.)*0.003, 0.001);
+    vec2 g = pos + vec2(0.0, cos(u_time/2.)*0.002);
+    vec2 b = pos + vec2(cos(u_time/2.)*0.001, sin(u_time/2.)*0.003);
 
     float chargeR = rad / length(uv - r); 
     float chargeG = rad / length(uv - g); 
@@ -31,8 +31,8 @@ void main() {
     
     //defining ball positions
     vec2 b1 = mou;
-    vec2 b2 = vec2(-0.3, 0.01);
-    vec2 b3 = vec2(0.5, -0.3);
+    vec2 b2 = vec2(.3*cos(u_time*0.5), .4*sin(u_time*0.5));
+    vec2 b3 = vec2(-0.1, 0.4*sin(u_time*.2));
     vec2 b4 = vec2(0.5*(cos(u_time*.3)), 0.01);
     
     //generating charge levels for balls
@@ -45,9 +45,9 @@ void main() {
 
     //apply chromatic abberation
     vec3 bg = vec3(0.0); 
-    bg.r += ss(0.9, 0.92, total.r) - ss(0.95, 0.965, total.r);
-    bg.g += ss(0.9, 0.92, total.g) - ss(0.95, 0.965, total.g);
-    bg.b += ss(0.9, 0.92, total.b) - ss(0.95, 0.965, total.b);
+    bg.r += ss(0.9, 0.92, total.r) - ss(0.93, 0.945, total.r);
+    bg.g += ss(0.9, 0.92, total.g) - ss(0.93, 0.945, total.g);
+    bg.b += ss(0.9, 0.92, total.b) - ss(0.93, 0.945, total.b);
 
     gl_FragColor = vec4(bg, 1.0);
 }
