@@ -41,7 +41,7 @@ void main() {
     vec3 c1 = charge(uv, b1, 0.04);
     vec3 c2 = charge(uv, b2, 0.045);
     vec3 c3 = charge(uv, b3, 0.03);
-    vec3 c4 = charge(uv, b4, 0.01);
+    vec3 c4 = charge(uv, b4, 0.04);
 
     vec3 total = c1 + c2 + c3 + c4;
 
