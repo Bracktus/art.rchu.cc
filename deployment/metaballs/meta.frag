@@ -27,8 +27,9 @@ void main() {
     uv.x *= u_resolution.x/u_resolution.y;
 
     /* vec2 b1 = vec2(0.1, 0.3); */
-    u_mouse.y *= -1.;
-    vec2 b1 = u_mouse;
+    vec2 mou = u_mouse;
+    mou.y *= -1.;
+    vec2 b1 = mou;
     vec2 b2 = vec2(0.3, 0.01);
 
     vec3 c1 = charge(uv, b1, 0.05);
