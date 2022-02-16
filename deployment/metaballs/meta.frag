@@ -8,10 +8,12 @@ uniform float u_time;
 uniform vec2 u_mouse;
 
 vec3 charge(vec2 uv, vec2 pos, float rad){
+    //offset rgb to create chromatic abberation
     vec2 r = pos + vec2(sin(u_time/2.)*0.003, 0.001);
     vec2 g = pos + vec2(0.0, cos(u_time/2.)*0.002);
     vec2 b = pos + vec2(cos(u_time/2.)*0.001, sin(u_time/2.)*0.003);
-
+    
+    //generate charge levels for each colour
     float chargeR = rad / length(uv - r); 
     float chargeG = rad / length(uv - g); 
     float chargeB = rad / length(uv - b); 
@@ -35,7 +37,7 @@ void main() {
     vec2 b3 = vec2(-0.1, 0.4*sin(u_time*.2));
     vec2 b4 = vec2(0.5*(cos(u_time*.3)), 0.01);
     
-    //generating charge levels for balls
+    //get charge levels for balls
     vec3 c1 = charge(uv, b1, 0.05);
     vec3 c2 = charge(uv, b2, 0.08);
     vec3 c3 = charge(uv, b3, 0.1);
@@ -43,7 +45,7 @@ void main() {
 
     vec3 total = c1 + c2 + c3 + c4;
 
-    //apply chromatic abberation
+    //apply chromatic abberation offsets
     vec3 bg = vec3(0.0); 
     bg.r += ss(0.9, 0.92, total.r) - ss(0.93, 0.945, total.r);
     bg.g += ss(0.9, 0.92, total.g) - ss(0.93, 0.945, total.g);
