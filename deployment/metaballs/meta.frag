@@ -28,7 +28,7 @@ void main() {
 
     /* vec2 b1 = vec2(0.1, 0.3); */
 
-    vec2 b1 = mouse_norm;
+    vec2 b1 = u_mouse;
     vec2 b2 = vec2(0.3, 0.01);
 
     vec3 c1 = charge(uv, b1, 0.05);
