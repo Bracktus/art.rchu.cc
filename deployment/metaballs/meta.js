@@ -14,7 +14,7 @@ function windowResized(){
 function draw() {
     shader(theShader);
 
-    const mx = (mouseX / width) - 0.5;
+    const mx = (mouseX / width) * (width/height);
     const my = (mouseY / height) - 0.5;
 
     theShader.setUniform("u_resolution", [width, height]);
