@@ -1,4 +1,4 @@
-let rad = 0.001;
+let rad = 0.03;
 
 function preload() {
     theShader = loadShader("/deployment/metaballs/meta.vert", "/deployment/metaballs/meta.frag")
@@ -23,11 +23,18 @@ function draw() {
     theShader.setUniform("u_resolution", [width, height]);
     theShader.setUniform("u_time", frameCount * 0.01);
     theShader.setUniform("u_mouse", [mx, my]);
+    theShader.setUniform("u_scroll", rad);
     rect(0,0, width, height);
 }
 
 function changeSize(event){
     if (event.deltaY > 0){
-        
+        rad = max(0.6, rad+0.001);
+        console.log("up!");
     }
+    else{
+        rad = max(0.6, rad-0.001);
+        console.log("down!");
+    }
+
 }
