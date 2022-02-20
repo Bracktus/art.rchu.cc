@@ -6,7 +6,7 @@ function preload() {
 
 function setup(){
     cnv = createCanvas(windowWidth, windowHeight, WEBGL);
-    cnv.mouseWheel(changeSize);
+    // cnv.mouseWheel(changeSize);
     noCursor();
 }
 
@@ -27,14 +27,11 @@ function draw() {
     rect(0,0, width, height);
 }
 
-function changeSize(event){
-    if (event.deltaY > 0){
-        rad = max(0.6, rad+0.001);
-        console.log("up!");
-    }
-    else{
-        rad = max(0.6, rad-0.001);
-        console.log("down!");
-    }
-
-}
+// function changeSize(event){
+//     if (event.deltaY > 0){
+//         rad = max(0.6, rad+0.001);
+//     }
+//     else{
+//         rad = max(0.6, rad-0.001);
+//     }
+// }
