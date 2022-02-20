@@ -1,9 +1,12 @@
+let rad = 0.001;
+
 function preload() {
-     theShader = loadShader("/deployment/metaballs/meta.vert", "/deployment/metaballs/meta.frag")
+    theShader = loadShader("/deployment/metaballs/meta.vert", "/deployment/metaballs/meta.frag")
 }
 
 function setup(){
-    createCanvas(windowWidth, windowHeight, WEBGL);
+    cnv = createCanvas(windowWidth, windowHeight, WEBGL);
+    cnv.mouseWheel(changeSize);
     noCursor();
 }
 
@@ -19,7 +22,12 @@ function draw() {
 
     theShader.setUniform("u_resolution", [width, height]);
     theShader.setUniform("u_time", frameCount * 0.01);
-    theShader.setUniform("u_mouse", [mx, my])
+    theShader.setUniform("u_mouse", [mx, my]);
     rect(0,0, width, height);
 }
 
+function changeSize(event){
+    if (event.deltaY > 0){
+        
+    }
+}

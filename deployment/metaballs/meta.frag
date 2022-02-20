@@ -5,6 +5,7 @@ precision mediump float;
 #define ss(a, b, t)  smoothstep(a, b, t)
 uniform vec2 u_resolution;
 uniform float u_time;
+uniform float u_scroll;
 uniform vec2 u_mouse;
 
 vec3 charge(vec2 uv, vec2 pos, float rad){
@@ -38,7 +39,7 @@ void main() {
     vec2 b4 = vec2(0.5*(cos(u_time*.3)), 0.01);
     
     //get charge levels for balls
-    vec3 c1 = charge(uv, b1, 0.04);
+    vec3 c1 = charge(uv, b1, u_scroll);
     vec3 c2 = charge(uv, b2, 0.045);
     vec3 c3 = charge(uv, b3, 0.03);
     vec3 c4 = charge(uv, b4, 0.04);
