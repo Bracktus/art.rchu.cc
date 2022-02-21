@@ -31,7 +31,7 @@ int get(vec2 origin, int x, int y){
   //             |       |
   //             |       |
   //             |       |
-  // (0,0)       +-------+ (1,0)
+  // (0,0)       +-------+ (width,0)
   
   vec2 pos = vec2(origin) + vec2(x, y); // get neighbour index
   pos = vec2(pos.x, u_resolution.y - pos.y); //flipping y axis
@@ -65,17 +65,12 @@ void main() {
     }
     
 
-    if (length((uv/u_resolution - u_mouse/u_resolution)) < 0.005){
+    uv /= u_resolution;
+    uv.x *= u_resolution.x/u_resolution.y;
+    if (length((uv - u_mouse/u_resolution)) < 0.005){
       data = vec3(1.0);
     }
     
-    //populate grid
-    if (u_time < 0.0)
-    {
-      float col = (random(uv) - 0.5)*2.0;
-      data = vec3(col > 0.8 ? 1.0 : 0.0); 
-    }
-  
     gl_FragColor = vec4(data, 1.0);
 }
 
