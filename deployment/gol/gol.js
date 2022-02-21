@@ -51,7 +51,8 @@ function draw() {
     golShader.setUniform("u_state", buffer);
     golShader.setUniform("u_resolution", [width, height]);
     golShader.setUniform("u_time", frameCount * 0.01);
-    golShader.setUniform("u_mouse", [part.pos.x, height - part.pos.y]);
+    // golShader.setUniform("u_mouse", [part.pos.x, height - part.pos.y]);
+    golShader.setUniform("u_mouse", [mouseX, height - mouseY]);
     buffer.rect(0, 0, width, height);
 
     image(buffer, width * -0.5, height * -0.5, width, height);

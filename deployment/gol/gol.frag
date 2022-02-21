@@ -7,9 +7,6 @@ precision mediump float;
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
-
-
-
 uniform sampler2D u_state;
 
 float random (vec2 uv) {
@@ -68,7 +65,7 @@ void main() {
     }
     
 
-    if (length((uv - u_mouse)/u_resolution) < 0.005){
+    if (length((uv/u_resolution - u_mouse/u_resolution)) < 0.005){
       data = vec3(1.0);
     }
     
