@@ -1,3 +1,5 @@
+let part;
+
 class Particle {
   
   constructor(pos, vel){
