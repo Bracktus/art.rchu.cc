@@ -66,8 +66,9 @@ void main() {
     
 
     uv /= u_resolution;
+    uv -= 0.5;
     uv.x *= u_resolution.x/u_resolution.y;
-    if (length((uv - u_mouse/u_resolution)) < 0.005){
+    if (length((uv - u_mouse/u_resolution)) < 0.05){
       data = vec3(1.0);
     }
     
