@@ -25,7 +25,7 @@ function genParticle(){
   
   let pos = createVector(xPos,yPos);
   let vel = createVector(xVel,yVel);
-  return = new Particle(pos, vel);
+  return new Particle(pos, vel);
 }
 
 function preload() {
