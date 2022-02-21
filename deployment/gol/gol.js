@@ -31,7 +31,7 @@ function genParticle(){
 }
 
 function preload() {
-    golShader = loadShader("gol.vert", "gol.frag");
+    golShader = loadShader("/deployment/gol/gol.vert", "/deployment/gol/gol.frag");
 }
 
 function setup() {
