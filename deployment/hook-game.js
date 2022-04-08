@@ -16,6 +16,7 @@ class Player {
 		this.trailLen = 30;
 		this.trailX = [];
 		this.trailY = [];
+        this.nearestBall = null;
 	}
 	
 	render(){
@@ -27,7 +28,7 @@ class Player {
 		}
 	}
 	
-	update(){
+	update(points){
 		//apply velocity
 		this.x += this.xVel;
 		this.y += this.yVel;
@@ -63,6 +64,9 @@ class Player {
 		const trailIdx = frameCount % this.trailLen;
 		this.trailX[trailIdx] = this.x;
 		this.trailY[trailIdx] = this.y;
+
+        //store nearest Ball
+		this.nearestBall = this.nearest(points.lst);
 		
 	}
 	
@@ -73,8 +77,8 @@ class Player {
 		return (det > 0) ? -1 : 1
 	}
 	
-	attach(points){
-		this.attached = this.nearest(points);
+	attach(){
+		this.attached = this.nearestBall;
 		this.direction = this.getDirection();
 	}
 	
@@ -160,9 +164,9 @@ class BallList {
 		return lst;
 	}
 	
-	render(){
+	render(player){
 		for (let i = 0; i < this.lst.length; i++){
-			this.lst[i].render();
+			this.lst[i].render(player);
 		}
 	}
 }
@@ -175,12 +179,23 @@ class Ball{
 		this.y = map(random(), 0, 1, this.r / 2, height - this.r/2); 
 	}
 
-	render(){
+	render(player){
+        const dashedCircle = (x, y, r) => {
+            stroke(255);
+            drawingContext.setLineDash([5,10]);
+            circle(x, y, r)
+            drawingContext.setLineDash([]);
+        }
+
 		stroke(0, 255, 0);
 		noFill();
 		circle(this.x,
-					 this.y,
-					 this.r);
+               this.y,
+			   this.r);
+        if (player.nearestBall == this){
+            dashedCircle(this.x, this.y, this.r*1.5);
+        }
+
 	}
 }
 
@@ -264,6 +279,7 @@ class Timer {
 		text(secs, 30, 30);
 	}
 }
+
 let me;
 let them;
 let targ;
@@ -306,12 +322,12 @@ function draw(){
 		endScreen();
 	}
 	else{
-		me.update();
+		me.update(them);
 		targ.update(me.x, me.y);
 		
 		timer.render();
 		targ.render();
-		them.render();
+		them.render(me);
 		me.render();
 	}
 }
