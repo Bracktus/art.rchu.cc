@@ -316,17 +316,32 @@ function draw(){
 	}
 }
 
-function keyPressed(){
-	if (timer.isOver()){
+const onPress () => {
+    if (timer.isOver()){
 		resetGame();
 	}
 	
 	me.attach(them.lst);
 }
 
-function keyReleased(){
-	if (!timer.isOver()){
+const onRelease () => {
+    if (!timer.isOver()){
 		me.detatch();
-	}
+	}    
 }
 
+function mousePressed(){
+    onPress();
+}
+
+function keyPressed(){
+    onPress();
+}
+
+function keyReleased(){
+    onRelease();	
+}
+
+function mouseReleased(){
+    onRelease();
+}
