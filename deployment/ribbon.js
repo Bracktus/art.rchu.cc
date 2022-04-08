@@ -97,8 +97,4 @@ function windowResized() {
   background(0, 0, 21);
 }
 
-function keyPressed(){
-    if (keyCode === SPACE){
-        save(cnv, 'ribbon.jpg');
-    }
-}
+
