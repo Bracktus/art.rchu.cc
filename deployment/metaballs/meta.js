@@ -5,6 +5,7 @@ function preload() {
 }
 
 function setup(){
+    pixelDensity(1);
     cnv = createCanvas(windowWidth, windowHeight, WEBGL);
     cnv.mouseWheel(changeSize);
     noCursor();
