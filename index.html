@@ -14,13 +14,28 @@
     }
 
     body {
-      /* taken from https://kumaclick.neocities.org*/
-      background-size: 30px 30px;
-      background-color:rgb(173,216,230);
-      background-image:
-          linear-gradient(to right, white 1px, transparent 1px),
-          linear-gradient(to bottom, white 1px, transparent 1px);
-      background-attachment:fixed;
+        /*https://stackoverflow.com/questions/3540194/how-to-make-a-grid-like-graph-paper-grid-with-just-css*/
+        background:
+            linear-gradient(-90deg, rgba(0,0,0,.05) 1px, transparent 1px),
+            linear-gradient(rgba(0,0,0,.05) 1px, transparent 1px), 
+            linear-gradient(-90deg, rgba(0, 0, 0, .04) 1px, transparent 1px),
+            linear-gradient(rgba(0,0,0,.04) 1px, transparent 1px),
+            linear-gradient(transparent 3px, #f2f2f2 3px, #f2f2f2 78px, transparent 78px),
+            linear-gradient(-90deg, #aaa 1px, transparent 1px),
+            linear-gradient(-90deg, transparent 3px, #f2f2f2 3px, #f2f2f2 78px, transparent 78px),
+            linear-gradient(#aaa 1px, transparent 1px),
+            #f2f2f2;
+
+        background-size:
+            4px 4px,
+            4px 4px,
+            80px 80px,
+            80px 80px,
+            80px 80px,
+            80px 80px,
+            80px 80px,
+            80px 80px;
+
       text-align: center;
       font-family: 'Fantasque Sans Mono', Times, serif;
     }
@@ -45,12 +60,13 @@
     }
 
     h1 {
+        /* taken from https://kumaclick.neocities.org*/
         padding-top: 5px;
         padding-bottom: 5px;
         text-align: center;
         border: solid 2px black;
         border-radius: 5px;
-        background-color: rgb(173,216,230);
+        background-color: rgb(244,231,231);
         background-image: linear-gradient(transparent 50%, rgb(255, 255, 255) 50%);
         background-size: 2px 2px;    
     }
