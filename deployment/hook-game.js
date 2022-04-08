@@ -316,7 +316,7 @@ function draw(){
 	}
 }
 
-const onPress () => {
+const onPress = () => {
     if (timer.isOver()){
 		resetGame();
 	}
@@ -324,7 +324,7 @@ const onPress () => {
 	me.attach(them.lst);
 }
 
-const onRelease () => {
+const onRelease = () => {
     if (!timer.isOver()){
 		me.detatch();
 	}    
