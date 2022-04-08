@@ -104,7 +104,7 @@ class Player {
 		for (let i = 0; i < this.trailLen; i++){
 				let index = (which + 1 + i) % this.trailLen;
 				circle(this.trailX[index] || this.x, 
-							 this.trailY[index] || this.x, 
+							 this.trailY[index] || this.y, 
 							 i/2);
 		}
 	}
