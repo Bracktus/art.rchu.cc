@@ -36,3 +36,7 @@ function displayLine(arr, i){
       arr.shift();
     }
 }
+
+function windowResized(){
+    resizeCanvas(windowWidth, windowHeight);
+}
