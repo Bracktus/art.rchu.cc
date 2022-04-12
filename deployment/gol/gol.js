@@ -1,35 +1,3 @@
-let part;
-
-class Particle {
-  
-  constructor(pos, vel){
-    this.pos = pos;
-    this.vel = vel;
-  }
-  
-  update(){
-    if (this.pos.x > width || this.pos.x < 0){
-      this.vel.x *= -1;
-    }
-    if (this.pos.y > height || this.pos.y < 0){ 
-      this.vel.y *= -1;
-    }
-    this.pos.add(this.vel);
-  }
-}
-  
-function genParticle(){
-  let xPos = random(width);
-  let yPos = random(height);
-  
-  let xVel = random(3,5);
-  let yVel = random(3,5);
-  
-  let pos = createVector(xPos,yPos);
-  let vel = createVector(xVel,yVel);
-  return new Particle(pos, vel);
-}
-
 function preload() {
     golShader = loadShader("/deployment/gol/gol.vert", "/deployment/gol/gol.frag");
 }
@@ -41,11 +9,9 @@ function setup() {
     buffer.clear();
     textureMode(NORMAL);
 
-    part = genParticle();
 }
 
 function draw() {
-    part.update();
 
     buffer.shader(golShader);
     golShader.setUniform("u_state", buffer);
