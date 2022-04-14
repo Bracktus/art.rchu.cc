@@ -22,7 +22,10 @@ class Particle {
     }
 
     getRepelForce(){
-        let m = createVector(mouseX + bounds.w/2, mouseY - bounds.h/2);
+        let m = createVector(
+            mouseX + bounds.w/2, 
+            mouseY - bounds.h/2
+        );
         let diff = p5.Vector.sub(this.pos, m);
         let len = diff.mag();
         let force = createVector(0,0);
@@ -55,11 +58,16 @@ function preload(){
 
 let bounds;
 let particles = [];  
+let input;
+let text;
+let button;
 
-function reset(text){
+function reset(){
+    text = input.value();
     let fontSize = min(width/2, height/2)*0.6;
     bounds = font.textBounds(text, width/2, height/2, fontSize);
     let points = font.textToPoints(text, width/2, height/2, fontSize);
+    particles = [];
     for (let i = 0; i < points.length; i++){
         let p = points[i];
         let pos = createVector(p.x,p.y);
@@ -70,17 +78,23 @@ function reset(text){
 }
 
 function setup(){
-    let text = "art.rchu.cc";
-    createCanvas(windowWidth ,windowHeight * 0.8);
-    reset(text);
+    createCanvas(windowWidth,windowHeight);
 
+    input = createInput("art.rchu.cc");
+    input.position(20,65);
+    input.input(reset);
+    input.style("background", "rgb(0,0,0)");
+    input.style("color", "rgb(255,255,255)");
+    input.style("border", "1px solid rgb(255, 255,255)");
+    input.style("padding", "5px");
+    input.style("border-radius", "3px");
 
-    let inp = createInput();
-    inp.position(0, windowHeight * 0.8);
-    inp.input(myInputEvent);
-    button = createButton("Submit");
-    button.position(0, 0);
-    button.mousePressed(reset(input.value));
+    reset();
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+  reset();
 }
 
 function draw(){
