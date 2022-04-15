@@ -1,4 +1,3 @@
-
 function setup(){
     createCanvas(windowWidth*0.75,300);
 }
@@ -24,20 +23,20 @@ function myShape(x, y, r){
     fill(255, 0, 0);
     square(x, y ,r);
     fill(0, 255, 0);
-    square(x + 4, y, r);
-    fill(0, 0, 255);
     square(x + 3, y, r);
+    fill(0, 0, 255);
+    square(x + 1.5, y, r);
 }
 
 function f(x,y,t){
     let inMiddle = abs(y - height/2) < 25;
     x = (x-width/2)/100;
     y = (y-height/2)/100;
-    t = cos(t/30) * TWO_PI;
+    t = cos(t/80) * TWO_PI;
     
-    a = t / 15;
+    a = (t/TWO_PI) * PI/8;
     if (mouseIsPressed){
-        a =+ map(mouseX - width/2, 0, width, 0, PI * 0.4);
+        a =+ map(mouseX - width/2, 0, width, 0, PI);
     }
     x = x*cos(a) - y*sin(a);
     y = x*sin(a) + y*cos(a);
@@ -47,6 +46,5 @@ function f(x,y,t){
 
     return max(s1,s2,s3);
 }
-
 
 
