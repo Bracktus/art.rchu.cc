@@ -1,4 +1,3 @@
-
 class Particle {
   
   constructor(pos, vel){
