@@ -88,7 +88,7 @@ void main() {
     vec2 uv = gl_FragCoord.xy/u_resolution.xy;
     uv.x *= u_resolution.x/u_resolution.y;
     /* uv *= floor(u_mouse)*10.0; */
-    uv *= floor(u_mouse.x * 0.05);
+    uv *= floor(u_mouse.x * 0.005);
     float off = cnoise(vec3(floor(uv), 0.2)) * 10.;
     uv = fract(uv);
     
