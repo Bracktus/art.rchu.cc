@@ -73,7 +73,7 @@ void main(){
 
     // NORMALISATION
     vec2 uv = gl_FragCoord.xy/u_resolution.xy;
-    float n = 45.0;
+    float n = 80.0;
 
     vec2 px = 1.0 - (floor(uv*n)/n);
     vec4 tex = texture2D(tex0, px);
