@@ -54,7 +54,7 @@ void main(){
                        0.5870 * tex.g + 
                        0.0722 * tex.b);
 
-    vec3 bg = vec3(0.0);
+    vec3 bg = vec3(0.1);
     vec3 col = vec3(lightness + 0.25);
     if (lightness > 0.75){
         bg = max(ex(uv), circle(uv)) * col;
