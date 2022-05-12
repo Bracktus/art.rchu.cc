@@ -11,7 +11,7 @@ function setup(){
     noStroke();
 
     cam = createCapture(VIDEO);
-    cam.size(windowWidth/2, windowHeight);
+    cam.size(windowWidth, windowHeight);
     cam.hide();
 }
 
@@ -28,11 +28,3 @@ function draw() {
     rect(0,0, width, height);
 }
 
-function changeSize(event){
-    if (event.deltaY > 0){
-        rad = min(0.6, rad+0.001);
-    }
-    else{
-        rad = max(0.01, rad-0.001);
-    }
-}

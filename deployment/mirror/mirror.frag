@@ -1,4 +1,4 @@
-    #ifdef GL_ES
+#ifdef GL_ES
 precision mediump float;
 #endif
 
@@ -43,7 +43,7 @@ void main(){
     uv.x *= u_resolution.x/u_resolution.y;
 
 
-    float n = 60.0;
+    float n = 30.0;
     vec2 px = floor(uv*n)/n;
     vec4 tex = texture2D(tex0, 1.0 - px);
 
