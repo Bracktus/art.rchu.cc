@@ -7,11 +7,14 @@ function preload() {
 
 function setup(){
     pixelDensity(1);
-    cnv = createCanvas(windowWidth, windowHeight, WEBGL);
+
+    let w = windowWidth - 10;
+    let h = windowWidth - 10;
+    cnv = createCanvas(w, h, WEBGL);
     noStroke();
 
     cam = createCapture(VIDEO);
-    cam.size(windowWidth, windowHeight);
+    cam.size(w, h);
     cam.hide();
 }
 
