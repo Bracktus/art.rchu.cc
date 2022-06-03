@@ -70,7 +70,7 @@ function block(cX, cY, r, config){
 
     stroke(120)
     strokeWeight(2);
-    circle(cX, cY, r* 0.9 * sin(frameCount/12.5));
+    circle(cX, cY, r* 0.9 * sin(frameCount*0.08));
 
     stroke(255)
     strokeWeight(3);
