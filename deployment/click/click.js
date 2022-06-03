@@ -24,7 +24,7 @@ const digMap = {1: one, 2:two, 3:three, 4:four, 5:five};
 
 function preload(){
     soundFormats('mp3');
-    mySound = loadSound('deployment/chroma-2/click.mp3');
+    mySound = loadSound('deployment/click/click.mp3');
 }
 
 function setup(){
