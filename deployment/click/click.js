@@ -21,7 +21,7 @@ const five = [0, 65, 0,
               0, 18, 0]              
 
 const digMap = {1: one, 2:two, 3:three, 4:four, 5:five};
-
+let count = 1;
 function preload(){
     soundFormats('mp3');
     mySound = loadSound('deployment/click/click.mp3');
@@ -35,18 +35,19 @@ function setup(){
 }
 
 function draw(){
-    let k = Math.floor((frameCount % 200) / 40) + 1;
     let r = width*0.35;
 
     if ((frameCount % 40) == 0){
+        //runs every 40 frames
         mySound.play();
+        count = (count % 5) + 1;
     }
 
     blendMode(BLEND);
     background(0);
     stroke(255);
     noFill();
-    grid(width/2 - r, height/2 - r, r, digMap[k]);
+    grid(width/2 - r, height/2 - r, r, digMap[count]);
 }
 
 function grid(cX, cY, r, config){
@@ -70,7 +71,8 @@ function block(cX, cY, r, config){
 
     stroke(120)
     strokeWeight(2);
-    circle(cX, cY, r* 0.9 * sin(frameCount*0.08));
+    let freq = frameCount/tau;
+    circle(cX, cY, r * sin(freq * 40));
 
     stroke(255)
     strokeWeight(3);
