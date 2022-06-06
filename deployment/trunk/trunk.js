@@ -1,8 +1,8 @@
 let theShader;
 
 function preload() {
-    theShader = loadShader("/deployment/posters/posters.vert", 
-                           "/deployment/posters/posters.frag");
+    theShader = loadShader("/deployment/trunk/trunk.vert", 
+                           "/deployment/trunk/trunk.frag");
 }
 
 function setup(){
