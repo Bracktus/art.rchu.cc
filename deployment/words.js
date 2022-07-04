@@ -17,7 +17,7 @@ class Spring {
         acceleration.add(force);
 
         this.velocity.add(acceleration);
-        this.velocity.mult(0.95);
+        this.velocity.mult(0.96);
         this.position.add(this.velocity);
     }
 
@@ -57,13 +57,13 @@ class Blob {
     }
     
     update(){
-        let numSprings = this.springs.length - 1;
-        let spread = 0.15;
+        let numSprings = this.springs.length;
+        let spread = 0.3;
         let lDiff = [];
         let rDiff = [];
 
         for (let i = 0; i < numSprings; i++){
-            let leftIdx = (i != 0) ? i - 1 : numSprings;
+            let leftIdx = (i != 0) ? i - 1 : numSprings - 1;
             let rightIdx = (i + 1) % numSprings;
 
             let currLen = this.springs[i].getLength();
@@ -79,50 +79,61 @@ class Blob {
             let totalDiff = lDiff[i] + rDiff[i];
             let total = mag2Vec(currSpring.unit, totalDiff);
 
-            currSpring.update(total, 0.3)
+            currSpring.update(total, 0.6)
         }
     }
 
     render() {
-        beginShape(TRIANGLE_STRIP);
-
-        vertex(this.origin.x, this.origin.y);
-        this.springs.forEach((s) => {
-            vertex(s.position.x, s.position.y);
-            vertex(this.origin.x, this.origin.y);
+        beginShape();
+        this.springs.forEach(s => {
+            vertex(s.position.x, s.position.y);//a list of points 
         });
-
-        vertex(this.springs[0].origin.x,
-               this.springs[0].origin.y);
         endShape();
     }
+    
+    closestSpring(position) {
+        const dist2pos = p => p5.Vector.dist(position, p);
+        const distances = this.springs.map(s => [dist2pos(s.position), s]);
+        const closest = distances.reduce((prev, curr) => {
+            let prevDist = prev[0];
+            let currDist = curr[0];
+            return (prevDist < currDist) ? prev : curr;
 
-    pullRandom(dist) {
-        let rand = random(this.springs);
-        rand.pull(dist);
+        });
+        return closest[1];
     }
-
 }
 
 const mag2Vec = (unit, mag) => p5.Vector.mult(unit, mag);
+const mousePos = () => createVector(mouseX - width/2, mouseY - height/2);
+const numSprings = 30;
 let blob;
 
 function setup(){
-    createCanvas(windowWidth, windowHeight, WEBGL);
+    createCanvas(windowWidth, windowHeight);
     const start = createVector(0,0);
     const rad = min(width, height)/4;
-    blob = new Blob(start, rad, 30);
+    blob = new Blob(start, rad, numSprings);
 }
 
 function draw(){
+    translate(width/2, height/2);
     background(0);
     fill(255);
-    noStroke();
 
     blob.render();
     blob.update();
+    const mouse = mousePos();
+    const spring = blob.closestSpring(mouse);
+    fill(255, 0, 0);
+    circle(spring.position.x, spring.position.y, 10);
+    fill(255);
+
 }
 
-function mousePressed() {
-  blob.pullRandom(50);
+function mousePressed(){
+    const mouse = mousePos();
+    const spring = blob.closestSpring(mouse);
+    spring.pull(-40);
 }
+
