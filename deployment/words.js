@@ -134,6 +134,6 @@ function draw(){
 function mousePressed(){
     const mouse = mousePos();
     const spring = blob.closestSpring(mouse);
-    spring.pull(-40);
+    spring.pull(-100);
 }
 
