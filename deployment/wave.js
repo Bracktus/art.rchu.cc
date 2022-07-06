@@ -13,19 +13,21 @@ function setup(){
 }
 
 function draw(){
+
     background(255);
     stroke(0);
-		strokeWeight(4)
+    strokeWeight(4)
     noFill();
     rotateX(0.25*PI);
-		rotateZ(frameCount/80);
+    rotateZ(frameCount/80);
+
     let d = 30;
     let x,y,z;
-		let spectrum = fft.analyze();
-		spectrum.shift();
-		spectrum.shift();
-		spectrum.shift();
-		let i = 0;
+    let spectrum = fft.analyze();
+    spectrum.shift();
+    spectrum.shift();
+    spectrum.shift();
+    let i = 0;
     for (let k = 0; k < layers; k++){
       beginShape();
       for (let a = 0; a < 2*PI; a+= 1/k * 0.5){
@@ -33,17 +35,13 @@ function draw(){
           x = d*k*cos(a);
           y = d*k*sin(a);
           z = k*cos(frameCount/100);
-					//z *= noise(x/30,y/30);
-					if (i < spectrum.length){
-							z += spectrum[i++]*2;
-					}
+          //z *= noise(x/30,y/30);
+          if (i < spectrum.length){
+                z += spectrum[i++]*2;
+          }
           vertex(x,y,z);
       }
       endShape(CLOSE);
   	}
-}
-
-function mousePressed(){
-
 }
 

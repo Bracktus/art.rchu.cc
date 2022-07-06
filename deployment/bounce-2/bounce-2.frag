@@ -12,11 +12,8 @@ void main() {
 
     
     vec3 texCol = texture2D(u_tex0, uv).rgb;
-    vec3 color = vec3(0.);
-    color = vec3(uv.x,uv.y,abs(sin(u_time)));
-
-    
-    gl_FragColor = vec4(texCol*color, 1.0);
+    vec3 bg = texCol * vec3(uv.x,uv.y,abs(sin(u_time)));
+    gl_FragColor = vec4(bg, 1.0);
 }
 
 

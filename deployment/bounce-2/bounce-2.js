@@ -105,12 +105,13 @@ class Blob {
 
 const mag2Vec = (unit, mag) => p5.Vector.mult(unit, mag);
 const mousePos = () => createVector(mouseX - width/2, -(mouseY - height/2))
-const numSprings = 30;
+const numSprings = 35;
 
 
 let blob;
 let closestLocked;
 let blobMask;
+let rad;
 
 function preload() {
      theShader = loadShader("/deployment/bounce-2/bounce-2.vert",
@@ -123,7 +124,7 @@ function setup(){
     blobMask.translate(width/2, height/2);
     
     const start = createVector(0,0);
-    const rad = min(width, height)/4;
+    rad = min(width, height)/4;
     blob = new Blob(start, rad, numSprings);
 }
 
@@ -138,8 +139,10 @@ function draw(){
     if (mouseIsPressed) {
         const spring = closestLocked;
         const springPos = closestLocked.position;
-        const len = p5.Vector.dot(mouse, springPos) / springPos.mag();
+        const proj = p5.Vector.dot(mouse, springPos) / springPos.mag();
+        const len = max(proj, rad/16);
         spring.position = p5.Vector.mult(spring.unit, -len);
+
     } else {
         //Show closest point
         const spring = blob.closestSpring(mouse);
