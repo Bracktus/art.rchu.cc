@@ -159,7 +159,6 @@ function draw(){
     theShader.setUniform("u_tex0", blobMask);
     theShader.setUniform("u_time", frameCount * 0.01);
     rect(0,0, width, height);
-    // noLoop();
 }
 
 function mousePressed(){
