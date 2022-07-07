@@ -126,6 +126,7 @@ function setup(){
     const start = createVector(0,0);
     rad = min(width, height)/4;
     blob = new Blob(start, rad, numSprings);
+    pixelDensity(1);
 }
 
 function draw(){
