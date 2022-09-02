@@ -1,3 +1,9 @@
+// Modified for sableRaph's weekly creative challenge 
+// #WCCChallenge
+// https://www.twitch.tv/sableraph
+
+// more stuff at - art.rchu.cc 
+
 class Spring {
     constructor(origin, unit) {
         this.origin = origin;
@@ -44,7 +50,7 @@ class Blob {
         let resting;
         let unit;
 
-        for (let i = 0; i < numSprings; i++){
+        for (let i = 0; i < numSprings + 1; i++){
             angle = (i / numSprings) * TWO_PI;
             resting = createVector(radius * cos(angle),
                                    radius * sin(angle));
@@ -57,7 +63,7 @@ class Blob {
     
     update(){
         let numSprings = this.springs.length;
-        let spread = 0.15;
+        let spread = 0.4;
         let lDiff = [];
         let rDiff = [];
 
@@ -78,16 +84,21 @@ class Blob {
             let totalDiff = lDiff[i] + rDiff[i];
             let total = mag2Vec(currSpring.unit, totalDiff);
 
-            currSpring.update(total, 0.4)
+            currSpring.update(total, 0.65)
         }
     }
 
-    render(canvas) {
-        canvas.beginShape();
+    render() {
+				noStroke();
+				fill(144, 164, 197);
+				drawingContext.shadowBlur = 32;
+  		  drawingContext.shadowColor = color(30, 32, 32);
+        beginShape();
         this.springs.forEach(s => {
-            canvas.vertex(s.position.x, s.position.y);
+            vertex(s.position.x, s.position.y);
         });
-        canvas.endShape();
+			
+        endShape();
     }
     
     closestSpring(position) {
@@ -103,38 +114,27 @@ class Blob {
     }
 }
 
-const mag2Vec = (unit, mag) => p5.Vector.mult(unit, mag);
-const mousePos = () => createVector(mouseX - width/2, -(mouseY - height/2))
-const numSprings = 35;
 
+const mag2Vec = (unit, mag) => p5.Vector.mult(unit, mag);
+const mousePos = () => createVector(mouseX - width/2, (mouseY - height/2))
+const numSprings = 60;
 
 let blob;
 let closestLocked;
-let blobMask;
 let rad;
 
-function preload() {
-     theShader = loadShader("/deployment/bounce-2/bounce-2.vert",
-                            "/deployment/bounce-2/bounce-2.frag");
-}
-
 function setup(){
-    createCanvas(windowWidth, windowHeight, WEBGL);
-    blobMask = createGraphics(windowWidth, windowHeight);
-    blobMask.translate(width/2, height/2);
-    
+    createCanvas(windowWidth, windowHeight);
     const start = createVector(0,0);
     rad = min(width, height)/4;
     blob = new Blob(start, rad, numSprings);
-    pixelDensity(1);
 }
 
 function draw(){
-    blobMask.background(0);
-    blobMask.fill(255);
-    blobMask.noStroke();
-    blob.render(blobMask);
-
+		translate(width/2, height/2);
+		background(217, 231, 231);
+	
+    blob.render();
     const mouse = mousePos();
        
     if (mouseIsPressed) {
@@ -148,17 +148,12 @@ function draw(){
         //Show closest point
         const spring = blob.closestSpring(mouse);
         const springPos = spring.position;
-
-        blobMask.fill(255, 0, 0);
-        blobMask.circle(springPos.x, springPos.y, 10);
-        blob.update()
+				
+				fill(169, 185, 202);
+				strokeWeight(1);
+        blob.update();
+				circle(springPos.x, springPos.y, 10);
     }
-
-    shader(theShader);
-    theShader.setUniform("u_resolution", [width, height]);
-    theShader.setUniform("u_tex0", blobMask);
-    theShader.setUniform("u_time", frameCount * 0.01);
-    rect(0,0, width, height);
 }
 
 function mousePressed(){
