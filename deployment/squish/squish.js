@@ -73,9 +73,9 @@ function sketch(pg) {
 	
   pg.translate(mouseX, mouseY);
   pg.rotate(angle + PI/2);
-  pg.ellipse(0,0, 
-						 mSize - accSpeed * squishFactor * 0.25, 
-						 mSize + accSpeed * squishFactor);
+  pg.ellipse(0,0,
+             max(0, mSize - accSpeed * squishFactor * 0.1), 
+             mSize + accSpeed * squishFactor);
 	pg.strokeWeight(1);
 	
 	if (mx*mx + my*my > r*r) {
@@ -86,8 +86,8 @@ function sketch(pg) {
 		pg.stroke(255)
 	}
   pg.ellipse(0,0, 
-						 (mSize - accSpeed * squishFactor * 0.25) * 0.3, 
-						 (mSize + accSpeed * squishFactor)* 0.3);
+			 max(0, mSize - accSpeed * squishFactor * 0.1) * 0.3, 
+		     (mSize + accSpeed * squishFactor) * 0.3);
   pg.pop();
 }
 
