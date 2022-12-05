@@ -3,7 +3,7 @@ let pg;
 let seed;
 
 function preload(){
-	theShader = loadShader('/deployment/squish/vert.glsl', '/deployment/squish/frag.glsl');
+	theShader = loadShader('vert.glsl', 'frag.glsl');
 }
 
 function setup() {
@@ -42,11 +42,8 @@ function sketch(pg) {
   let angle = dVec.heading();
   let easers = color(10, 10, 10);
 
-  accSpeed *= 0.9; 
-  if (!almostZero(accSpeed)) {
-    accSpeed = 0;
-  }
-  accSpeed += speed;
+  accSpeed *= 0.75; 
+  accSpeed += speed*0.3;
 	off += 0.015;
 
 	//Draw the big circle
@@ -62,37 +59,31 @@ function sketch(pg) {
 
 	// Draw the cursor
   pg.push();
+	pg.noStroke();
 	let mx = mouseX - width/2;
 	let my = mouseY - height/2
 	
 	if (mx*mx + my*my > r*r) {
 		pg.fill(66, 68, 62);
-		pg.stroke(93, 94, 83);
 	} 
   let mSize = minWH/20;
 	
   pg.translate(mouseX, mouseY);
   pg.rotate(angle + PI/2);
-  pg.ellipse(0,0,
-             max(0, mSize - accSpeed * squishFactor * 0.1), 
-             mSize + accSpeed * squishFactor);
+  pg.ellipse(0,0, 
+						 max(0, mSize - accSpeed * squishFactor * 0.1), 
+						 mSize + accSpeed * squishFactor);
 	pg.strokeWeight(1);
 	
 	if (mx*mx + my*my > r*r) {
 		pg.fill(255);
-		pg.stroke(255);
 	} else {
 		pg.fill(easers);
-		pg.stroke(255)
 	}
+
   pg.ellipse(0,0, 
-			 max(0, mSize - accSpeed * squishFactor * 0.1) * 0.3, 
-		     (mSize + accSpeed * squishFactor) * 0.3);
+						 max(0, (mSize - accSpeed * squishFactor * 0.1)) * 0.3, 
+						 (mSize + accSpeed * squishFactor)* 0.3);
   pg.pop();
 }
 
-const almostZero = n => abs(n) < 0.01;
-
-function f(x) {
-	return x < 0.5 ? 4 * x * x * x : 1 - pow(-2 * x + 2, 3) / 2;
-}
