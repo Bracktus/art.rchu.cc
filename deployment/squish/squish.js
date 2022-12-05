@@ -10,20 +10,20 @@ function setup() {
   // disables scaling for retina screens which can create inconsistent scaling between displays
   pixelDensity(1);
   createCanvas(windowWidth, windowHeight, WEBGL);
-	pg = createGraphics(windowWidth, windowHeight);
+  pg = createGraphics(windowWidth, windowHeight);
 }
 
 function draw() {
   // shader() sets the active shader with our shader
-	noCursor();
+  noCursor();
   shader(theShader);
-	sketch(pg);
+  sketch(pg);
 
   // here we're using setUniform() to send our uniform values to the shader
   theShader.setUniform("u_resolution", [width, height]);
   theShader.setUniform("u_time", millis() / 1000.0);
   theShader.setUniform("u_mouse", [mouseX, map(mouseY, 0, height, height, 0)]);
-	theShader.setUniform("u_tex0", pg);
+  theShader.setUniform("u_tex0", pg);
 
   // rect gives us some geometry on the screen
   rect(0,0,width,height);
@@ -43,17 +43,17 @@ function sketch(pg) {
   let easers = color(10, 10, 10);
 
   accSpeed *= 0.75; 
-  accSpeed += speed*0.3;
-	off += 0.015;
+  accSpeed += speed*0.4;
+  off += 0.015;
 
 	//Draw the big circle
   pg.push();
-	pg.translate(width/2, height/2);
-	let r = minWH*0.45;
-	pg.fill(66, 68, 62)
-	pg.stroke(93, 94, 83);
-	pg.strokeWeight(3);
-	pg.circle(0,0,r*2);
+  pg.translate(width/2, height/2);
+  let r = minWH*0.45;
+  pg.fill(66, 68, 62)
+  pg.stroke(93, 94, 83);
+  pg.strokeWeight(3);
+  pg.circle(0,0,r*2);
 	
   pg.pop();
 
@@ -70,20 +70,24 @@ function sketch(pg) {
 	
   pg.translate(mouseX, mouseY);
   pg.rotate(angle + PI/2);
-  pg.ellipse(0,0, 
-						 max(0, mSize - accSpeed * squishFactor * 0.1), 
-						 mSize + accSpeed * squishFactor);
-	pg.strokeWeight(1);
-	
-	if (mx*mx + my*my > r*r) {
-		pg.fill(255);
-	} else {
-		pg.fill(easers);
-	}
+  pg.ellipse(
+    0,0, 
+    max(0, mSize - accSpeed * squishFactor * 0.2), 
+    mSize + accSpeed * squishFactor
+  );
+  pg.strokeWeight(1);
+  
+  if (mx*mx + my*my > r*r) {
+    pg.fill(255);
+  } else {
+    pg.fill(easers);
+  }
 
-  pg.ellipse(0,0, 
-						 max(0, (mSize - accSpeed * squishFactor * 0.1)) * 0.3, 
-						 (mSize + accSpeed * squishFactor)* 0.3);
+  pg.ellipse(
+    0,0, 
+	max(0, (mSize - accSpeed * squishFactor * 0.2)) * 0.3, 
+	(mSize + accSpeed * squishFactor)* 0.3
+  );
   pg.pop();
 }
 
