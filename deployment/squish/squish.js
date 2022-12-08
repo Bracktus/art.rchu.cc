@@ -3,7 +3,7 @@ let pg;
 let seed;
 
 function preload(){
-	theShader = loadShader('vert.glsl', 'frag.glsl');
+	theShader = loadShader('/deployment/squish/vert.glsl', '/deployment/squish/frag.glsl');
 }
 
 function setup() {
